@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>바른말 탐험대 · 초등 맞춤법 학습</title></head>
+<body>
+  
+<script type="text/plain" id="chat-embed-source">
+<!-- ▼▼▼ 채팅 코드 삽입 위치 ▼▼▼ -->
+  <!DOCTYPE html><html style="height: 100%;"><body style="height: 100%; margin: 0;"><iframe src="https://copilotstudio.microsoft.com/environments/9324e73a-cd4e-e049-b7ba-177af6165e9c/bots/crbf2__0815_hgarC4/webchat?__version__=2&enableFileAttachment=false&cliAgent=true" frameborder="0" style="width: 100%; height: 100%; border: 0;"></iframe></body></html>
+<!-- ▲▲▲ 채팅 코드 삽입 위치 ▲▲▲ -->
+</script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  :root{
+    --ink:#1d2233; --ink-soft:#5a6280; --line:#e8eaf3;
+    --brand:#5b5bf6; --brand-soft:#eeeeff;
+    --mint:#12b8a0; --mint-soft:#e2f8f4;
+    --sun:#ff9550; --sun-soft:#fff0e6;
+    --card:#ffffff; --bg:#f6f7fc;
+    --shadow:0 1px 2px rgba(29,34,51,.04), 0 12px 32px -12px rgba(29,34,51,.18);
+    --radius:20px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  body::before{
+    content:""; position:fixed; inset:0 0 auto 0; height:560px; z-index:-1;
+    background:
+      radial-gradient(900px 440px at 12% -10%, #dcdcff 0%, transparent 60%),
+      radial-gradient(760px 400px at 88% -20%, #d6f5ee 0%, transparent 60%);
+  }
+  a{color:inherit}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 24px}
+
+  /* ── 헤더 ── */
+  header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.72); border-bottom:1px solid rgba(232,234,243,.9)}
+  .nav{display:flex; align-items:center; gap:14px; height:68px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px; letter-spacing:-.02em}
+  .logo .mark{width:34px; height:34px; border-radius:11px; display:grid; place-items:center; font-size:18px;
+    background:linear-gradient(140deg,var(--brand),#8b7bff); box-shadow:0 6px 14px -6px var(--brand)}
+  .nav-links{display:flex; gap:6px; margin-left:18px}
+  .nav-links a{padding:8px 12px; border-radius:10px; font-size:14.5px; font-weight:600;
+    color:var(--ink-soft); text-decoration:none}
+  .nav-links a:hover{background:var(--brand-soft); color:var(--brand)}
+  .nav-right{margin-left:auto; display:flex; align-items:center; gap:10px}
+  .btn{border:0; cursor:pointer; font-family:inherit; font-weight:700; border-radius:12px;
+    padding:10px 16px; font-size:14.5px; background:var(--brand); color:#fff;
+    box-shadow:0 8px 18px -10px var(--brand); transition:transform .12s, box-shadow .12s}
+  .btn:hover{transform:translateY(-1px); box-shadow:0 12px 22px -10px var(--brand)}
+
+  /* ── 히어로 ── */
+  .hero{padding:56px 0 30px; text-align:center}
+  .badge{display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700;
+    background:#fff; border:1px solid var(--line); color:var(--brand);
+    padding:7px 13px; border-radius:999px; box-shadow:var(--shadow)}
+  h1{font-size:clamp(30px,4.6vw,50px); line-height:1.22; letter-spacing:-.035em; margin:18px 0 12px; font-weight:800}
+  h1 em{font-style:normal; background:linear-gradient(180deg,transparent 62%,#ffe08a 62%)}
+  .lede{color:var(--ink-soft); font-size:17px; max-width:600px; margin:0 auto}
+
+  /* ── 채팅 패널 ── */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+  .chat{display:flex; flex-direction:column; overflow:hidden;
+    height:calc(100vh - 190px); min-height:600px; margin-bottom:56px}
+  .chat-top{display:flex; align-items:center; gap:11px; padding:15px 18px; border-bottom:1px solid var(--line)}
+  .avatar{width:38px; height:38px; border-radius:12px; display:grid; place-items:center; font-size:19px;
+    background:linear-gradient(140deg,var(--mint),#5ad9c4)}
+  .chat-top b{display:block; font-size:15px; letter-spacing:-.02em}
+  .chat-top small{color:var(--mint); font-size:12.5px; font-weight:700}
+  .chat-top .dot{width:7px; height:7px; border-radius:50%; background:var(--mint); display:inline-block; margin-right:5px}
+  #chat-frame{flex:1; width:100%; border:0; background:#fff}
+
+  /* ── 학부모 안내 ── */
+  .info{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:0 0 56px}
+  .info .card{padding:20px}
+  .info h3{margin:12px 0 6px; font-size:15.5px; letter-spacing:-.02em}
+  .info p{margin:0; font-size:13.5px; color:var(--ink-soft)}
+  .ico{width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-size:16px}
+  .ico.b{background:var(--brand-soft)} .ico.m{background:var(--mint-soft)} .ico.s{background:var(--sun-soft)}
+
+  footer{border-top:1px solid var(--line); background:#fff; padding:28px 0; font-size:13px; color:var(--ink-soft)}
+  .foot{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+  .foot .logo{font-size:15px}
+
+  @media (max-width:900px){
+    .info{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .chat{height:620px}
+  }
+  @media (max-width:560px){ .wrap{padding:0 16px} }
+</style>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="mark">🧭</span> 바른말 탐험대</div>
+    <nav class="nav-links">
+      <a href="#chat">AI 선생님</a>
+      <a href="#info">학부모·선생님</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">학습 시작</button>
+    </div>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="badge">✨ 초등 2~5학년 · AI 선생님과 1:1 맞춤법 공부</span>
+  <h1>헷갈리는 맞춤법,<br><em>물어보면서</em> 배워요</h1>
+  <p class="lede">되와 돼, 안과 않… 외우지 않아도 괜찮아요. AI 선생님이 문제를 내주고, 왜 틀렸는지 하나씩 알려줘요.</p>
+</section>
+
+<div class="wrap">
+  <section class="card chat" id="chat">
+    <div class="chat-top">
+      <span class="avatar">🦉</span>
+      <div><b>맞춤법 선생님</b><small><span class="dot"></span>지금 대답할 수 있어요</small></div>
+    </div>
+    <iframe id="chat-frame" title="맞춤법 학습 채팅"></iframe>
+  </section>
+</div>
+
+<section class="wrap info" id="info">
+  <div class="card">
+    <span class="ico b">👀</span>
+    <h3>혼자서도 할 수 있어요</h3>
+    <p>정답만 알려주지 않고, 왜 그런지 규칙을 아이 눈높이로 다시 설명해 줘요.</p>
+  </div>
+  <div class="card">
+    <span class="ico m">🧩</span>
+    <h3>학년에 맞는 문제</h3>
+    <p>2~5학년 교과 어휘와 받아쓰기 급수에 맞춰 난이도를 조절해요.</p>
+  </div>
+  <div class="card">
+    <span class="ico s">🏅</span>
+    <h3>하루 10분이면 충분</h3>
+    <p>궁금한 문장 하나만 물어봐도 그날 공부가 돼요.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="logo"><span class="mark">🧭</span> 바른말 탐험대</div>
+    <span>초등 2~5학년 맞춤법 자기주도 학습</span>
+    <span style="margin-left:auto">© 2026 바른말 탐험대</span>
+  </div>
+</footer>
+
+<script>
+// ── 채팅 코드 주입: 최상단 script 블록 내용을 그대로 iframe 문서로 사용
+document.getElementById('chat-frame').srcdoc =
+  document.getElementById('chat-embed-source').textContent;
+</script>
+</body>
+</html>
